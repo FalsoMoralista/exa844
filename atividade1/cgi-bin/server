@@ -1,0 +1,47 @@
+#!/usr/bin/python3
+import json
+import os
+
+
+from urllib.parse import parse_qs
+
+def read_messages():
+	with open('entries.json', "r") as filename:
+		entries = json.load(filename)
+		return entries
+
+def append_message(author, message):
+	with open('entries.json', "r+") as filename:
+		entries = json.load(filename)
+		messages = entries['messages']
+		new_msg = { "author": author, "message":message}
+		messages.append(new_msg)
+		dictionary = {"messages": messages}
+		filename.close()
+		with open('entries.json', "w+") as filename:
+			json.dump(dictionary, filename)
+			filename.close()
+
+qs = os.environ["QUERY_STRING"]
+parameters = parse_qs(qs, encoding="latin-1")
+
+author = parameters["author"][0]
+message = parameters["message"][0]
+
+append_message(author,message)
+messages = read_messages()
+
+print("Content-type: text/html")
+print()
+print('<html><body><h1 align="center">Message Blog</h1> <br><div align="center"><br><form method=“GET” action="server"><label for="author">Author:</label><br><input type="text" id="fname" name="author" value=""><br><label for="message">Message:</label><br><input type="text" id="lname" name="message" value=""><br><br><input type="submit" value="Submit"></form></div>')
+print('<div align="center">')
+for message in reversed(messages['messages']):
+	print('<hr>')
+	print("<h4>Author:", message['author'], "</h4>")
+	print()
+	print("<h4>Message", message['message'], "</h4>")
+	print()
+print('<hr>')
+print('</div>')
+print("</body></html>")
+print()

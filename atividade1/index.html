@@ -2,14 +2,17 @@
 	<title>Luciano</title>
 </head>
 
-<body bgcolor="black" text="white">
-	<h1 align="center">Hello World!</h1> <br>
+<body>
+	<h1 align="center">Message Blog</h1> <br>
 	<div align="center">
-		<a href="atividade5.html">Atividade 5</a>
-		<hr>
-		<img src="cassiopeia_a.jpg" height="512" width="512">
 		<br>
-		<a href="https://scholar.google.com/citations?user=mrjMhCoAAAAJ&hl=en">My Profile </a>
+		<form method=“GET” action="cgi-bin/server">
+  			<label for="author">Author:</label><br>
+  			<input type="text" id="fname" name="author" value=""><br>
+  			<label for="message">Message:</label><br>
+  			<input type="text" id="lname" name="message" value=""><br><br>
+  			<input type="submit" value="Submit">
+		</form> 
 		<hr>
 	</div>
 </body>

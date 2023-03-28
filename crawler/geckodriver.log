@@ -1,0 +1,4 @@
+1679947257501	geckodriver	INFO	Listening on 127.0.0.1:63981
+1679947257805	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "63982" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/w4/0dl8g1ps7db034jbgcvzs7_r0000gn/T/rust_mozprofileVgWTso"
+WebDriver BiDi listening on ws://127.0.0.1:63982
+DevTools listening on ws://127.0.0.1:63982/devtools/browser/0c945451-23e2-42b8-b8b9-41948ffa27fd
