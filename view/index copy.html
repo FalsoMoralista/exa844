@@ -22,7 +22,7 @@
         </script>
     </head>
     <body class="impress-supported impress-started impress-enabled">
-
+        <!--<div class="step active backgroundImage" data-x="0"></div>-->
         <div id="impress">
             <div id="myFirstSlide" class="step present active" data-x="0">
                 <div class="visualization">
@@ -64,20 +64,20 @@
                             A entropia como medida de quantidade de informação em um documento:
 
                             <ul>
-                                <li id="">Seja $h(x) = \log _{2}(1/P(x))$ a medida quantidade de informação de uma variável qualquer ($x$).</li>
+                                <li id="">Seja $h(w_i) = \log _{2}(1/P(w_i))$ a quantidade de informação de uma palavra ($w_i$) em um documento $d_k$.</li>
                             </ul>
-
-                            <div></div>
-
-
-                            <div>$\[ \sum_{n=1}^{\infty} 2^{-n} = 1 \]$</div>
-
-
+                            <div>Pode-se então computar quantidade média de informação de um documento $H(d_k)$, ou entropia (em bits), tal que:</div> 
                             <ul>
-                                <li>Seja $V_i =\{ W_1, W_2, \ldots, W_n\}$ : conjunto de palavras encontradas nas letras das canções de um conjunto de dados.</li>
-                                <li>Seja $Q_i =\{ Q_1, Q_2, \ldots, Q_n\}$ : conjunto de palavras encontradas nas letras das canções de um conjunto de dados.</li>
-                                <li>Seja $P_i = \{P_1, P_2, \ldots, P_n\}$ a razão entre a quantidade de incidências de uma palavra $Qi$ pelo total de palavras em meu vocabulário $|V|$ tal que $( P_i = \frac{Q_i}{|V|})$.</li>
-                                <li></li>
+                                <li>$H(d_k) = \sum_{i=1}^{j} P(w_i)\times h(w_i)$  $\forall w_i \in d_k=\{w_1, w_2, \ldots, w_j\}$ </li>
+                            </ul>
+                            <div>
+                                Considerando que:
+                            </div> 
+                            <ul>
+                                <li>$V_i =\{ w_1, w_2, \ldots, w_n\}$ : conjunto de palavras de um conjunto de dados.</li>
+                                <li>$Q_i =\{ q_1, q_2, \ldots, q_n\}$ : as respectivas incidências das palavras de um conjunto de dados.</li>
+                                <li>$P_i = \{p_1, p_2, \ldots, p_n\}$ a razão entre a quantidade de incidências de uma palavra, $qi$, pelo total de palavras em um vocabulário $|V|$ tal que $( p_i = \frac{q_i}{|V|})$.</li>
+                                <li>$D_i = \{d_1, d_2, \ldots, d_n\}$</li>
                             </ul>
                         </div>
                     </div>
