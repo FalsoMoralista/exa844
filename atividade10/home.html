@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head><title>Home</title></head>
+	<body>
+		Hello, {{username}}! Your session will expire in  {{remaining_time}} seconds. 
+		<br>
+		<a href="/logout">Logout</a>
+		<br>
+		Contador de requisições: {{counter}}
+		<br>
+		Contador de Acessos: {{accesses}}
+		<form action="/" method="GET">
+			<input type="hidden" name="counter"
+				value={{counter}} />
+			<input type="submit" value="Enviar"/>
+		</form>
+	</body>
+</html>
+

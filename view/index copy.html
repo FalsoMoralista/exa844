@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+ <!-- All impress.js steps are wrapped inside a div element of 0 size! This means that in your CSS you can't use relative values for width and height (example: width: 100%) to define the size of step elements. You need to use pixel values -->
+
+<html>
+    <head>
+        <title>My first presentation</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+
+
+        <link rel="stylesheet" href="css/impress-common.css"> <!-- Leave out, if you don't use impress-common.css-->
+        <link rel="stylesheet" href="css/impress.css">
+        <script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+        <script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script type="text/javascript"
+            src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+    </head>
+    <body class="impress-supported impress-started impress-enabled">
+
+        <div id="impress">
+            <div id="myFirstSlide" class="step present active" data-x="0">
+                <div class="visualization">
+                    <div class="container slide header" id="titleHeader">                        
+                        <h1>Analisando a complexidade de canções brasileiras dos últimos anos</h1>
+                    </div>
+
+                    <div class="container slide body">
+                        Objetivo: analisar o comportamento da "complexidade cultural" do cenário popular da música brasileira ao longo dos anos.
+                        <ul>
+                            <li>Montar uma base de dados dos nomes das canções mais populares ao longo dos anos.</li>
+                            <li>A partir das listas de nomes das canções mais populares, montar uma base de dados de letras.</li>
+                            <li>Avaliar a complexidade das letras das canções mais populares ao longo dos últimos anos.</li>
+                        </ul>      
+                        Complexidade - Riqueza Lexical ($R_L$):
+                        <div>
+                             - "Relação que se estabelece entre o número de palavras repetidas e diferentes de um texto e o número total de palavras nele encontradas" <a class="reference" href="https://www.ufrgs.br/textecc/porlexbras/porpopular/riqueza_lexical.php">[1]</a>.
+                        </div>
+                        <div class="container slide body">$ R_L = \frac{types}{tokens}$</div>
+                        <div id="formulaDescription"> 
+                            $types$: Número de palavras diferentes num documento.
+                            <br>$tokens$: Número total de palavras num documento.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="secondSlide" class="step active" data-x="300" data-z="300">
+                <div>
+                    <div class="container slide header" id="secondSlideHeader">
+                    <h1>Complexidade baseada em entropia</h1>
+                </div>
+                    <div class="container" id="secondSlideBody">
+                        <div class="container" id="secondSlideImg" >
+                            <img src="https://i.imgur.com/327Bo9W.png" id="figure1">
+                            <div id="figure1Caption">Figura:<br>Exemplo de vocabulário <a href="http://www.inference.org.uk/mackay/itprnn/individual/">[2].</a></div>
+                        </div>
+                        <div class="container slide body" id="secondSlideText">
+                            A entropia como medida de quantidade de informação em um documento:
+
+                            <ul>
+                                <li id="">Seja $h(x) = \log _{2}(1/P(x))$ a medida quantidade de informação de uma variável qualquer ($x$).</li>
+                            </ul>
+
+                            <div></div>
+
+
+                            <div>$\[ \sum_{n=1}^{\infty} 2^{-n} = 1 \]$</div>
+
+
+                            <ul>
+                                <li>Seja $V_i =\{ W_1, W_2, \ldots, W_n\}$ : conjunto de palavras encontradas nas letras das canções de um conjunto de dados.</li>
+                                <li>Seja $Q_i =\{ Q_1, Q_2, \ldots, Q_n\}$ : conjunto de palavras encontradas nas letras das canções de um conjunto de dados.</li>
+                                <li>Seja $P_i = \{P_1, P_2, \ldots, P_n\}$ a razão entre a quantidade de incidências de uma palavra $Qi$ pelo total de palavras em meu vocabulário $|V|$ tal que $( P_i = \frac{Q_i}{|V|})$.</li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+
+            <div id="thirdSlide" class="step" data-x="0">
+                <h2>Test</h2>
+                Lorem ipsum
+                <br>
+                <div class="container">
+                    <div class="container">
+                        <form name="figureSettings", onsubmit="send(figureSettings.minYear.value, figureSettings.maxYear.value, figureSettings.time.value)">
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="lname">Min Year</label>
+                                </div>
+                                <div class="col-75">
+                                    <select id="minYear" name="minYear">
+                                    </select>                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="country">Max Year</label>
+                                </div>
+                                <div class="col-75">
+                                    <select id="maxYear" name="maxYear">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="subject">Split Lenght:</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="range" id="timestamp" name="timestamp" min="1" max="10" value="1"
+                                    oninput="this.form.amount.value=this.value">
+                                    <output id="amount" name="time" for="rangeInput">1</output>
+                                    <!--<textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>-->
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <input type="submit" value="Submit">
+                            </div>
+                    </form>
+                    </div>    
+
+                    <div class="container mainDisplay header" id="mainDisplay" align="center"> 
+                        <h3>Data Display</h3> 
+                        <div class="container mainDisplay body" id="display" align="center">  
+                        </div>
+                    </div>   
+
+                </div>
+                
+            </div>
+        </div>
+
+
+        <script src = "https://ajax.aspnetCDN.com/ajax/jQuery/jQuery-3.3.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/impress/impress.js@2.0.0/js/impress.js"></script>
+        <script>window.impress || document.write('<script src="https://cdn.jsdelivr.net/gh/impress/impress.js@2.0.0/js/impress.js">\x3C/script>');</script>
+        <script>impress().init()</script>
+        <script>
+            var min = 1950,
+                max = 2010,
+            select1 = document.getElementById('minYear');
+            select2 = document.getElementById('maxYear');
+            for (var i = min; i<=max; i++){
+                var opt = document.createElement('option');
+                opt.value = i;
+                opt.innerHTML = i;
+                select1.appendChild(opt);
+                opt = document.createElement('option');
+                opt.value = i;
+                opt.innerHTML = i;
+                select2.appendChild(opt);
+            }
+        </script>
+
+        <script type="text/javascript">
+            function send(min, max, timestamp) {
+                var settings = {
+                    "url": "https://split-by-interval-xg7jaquagq-rj.a.run.app",
+                    "method": "POST",
+                    "timeout": 0,
+                    "crossDomain": true,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify({
+                        "resource": "get_average_lexical_complexity",
+                        "min": parseInt(min),
+                        "max": parseInt(max),
+                        "timestamp": timestamp
+                    }),
+                };
+                $.ajax(settings).done(function (response) {
+                    const object = JSON.parse(response)['content'];
+                    var data = [
+                    {
+                        x: Object.keys(object),
+                        y: Object.values(object),
+                        type: 'bar',
+                        marker: {
+                            color: 'rgb(59,96,228)',
+                            line: {
+                                color: 'rgb(0,0,0)',
+                                width: 1.5
+                            }
+                        } 
+                    }];
+                    Plotly.newPlot('display', data);
+                    //console.log(Object.keys(object));
+                });                
+            }
+        </script>
+    </body>
+</html>
